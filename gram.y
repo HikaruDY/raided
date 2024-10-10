@@ -164,7 +164,7 @@ static struct AdvLowpanCo *lowpanco;
 static struct AdvAbro  *abro;
 static void cleanup(void);
 #define ABORT	do { cleanup(); YYABORT; } while (0);
-static void yyerror(char const * msg);
+void yyerror(char const * msg);
 %}
 
 %%
@@ -969,11 +969,10 @@ struct Interface * readin_config(char const *path)
 	return IfaceList;
 }
 
-static void yyerror(char const * msg)
+void yyerror(char const * msg)
 {
 	fprintf(stderr, "%s:%d error: %s\n",
 		filename,
 		num_lines,
 		msg);
 }
-
