@@ -50,7 +50,7 @@ you must specify it with --target on the configure command line])
 esac
 
 dnl Determine CC and preset CFLAGS
-AC_PROG_CC_C99
+AC_PROG_CC
 AC_PROG_RANLIB
 
 AC_ARG_WITH([stack-protector], AS_HELP_STRING([--without-stack-protector], [Build without -fstack-protector]),[],[with_stack_protector=yes])
@@ -158,7 +158,6 @@ AC_CHECK_LIB(c, inet_ntop,,
 unset ac_cv_lib_inet6_inet_ntop
 
 dnl Checks for header files.
-AC_HEADER_STDC
 AC_CHECK_HEADERS( \
 	getopt.h \
 	ifaddrs.h \
@@ -173,7 +172,7 @@ AC_CHECK_HEADERS( \
 	sys/time.h \
 	time.h \
 )
-AC_HEADER_TIME
+HAVE_SYS_TIME_H
 
 dnl Checks for typedefs, structures, and compiler characteristics.
 AC_MSG_CHECKING(whether struct sockaddr_in6 has sin6_scope_id)
@@ -241,7 +240,7 @@ AS_IF([test "x$with_systemdsystemunitdir" != "xno"],
       [AC_SUBST([systemdsystemunitdir], [$with_systemdsystemunitdir])])
 AM_CONDITIONAL([HAVE_SYSTEMD], [test "x$with_systemdsystemunitdir" != "xno"])
 
-AM_CONFIG_HEADER(config.h)
+AC_CONFIG_HEADERS(config.h)
 AC_OUTPUT(
 	Makefile \
 	radvd.service \
