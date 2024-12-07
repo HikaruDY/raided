@@ -4,7 +4,9 @@ Installation:
 
 Run configure, e.g.
 
-./configure --prefix=/usr/local --sysconfdir=/etc --mandir=/usr/share/man
+mkdir build
+chdir build
+../configure --prefix=/usr/local --sysconfdir=/etc --mandir=/usr/share/man
 
 See configure --help for additional command line arguments.
 
